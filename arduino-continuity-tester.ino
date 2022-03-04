@@ -34,6 +34,9 @@ int main() {
   while(true) {
     Serial.println("\nTesting...\n----------");
     for(int readingPin = START_PIN; readingPin <= END_PIN; readingPin++) {
+      if(readingPin == LED_BUILTIN) // AVOID BUILT IN LED PIN
+        continue;
+      
       pinMode(readingPin, INPUT_PULLUP);
       for(int testingPin = START_PIN; testingPin <= END_PIN; testingPin++) {
         if(testingPin == readingPin)
